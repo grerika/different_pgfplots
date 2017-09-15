@@ -1,0 +1,78 @@
+\documentclass[10pt,a4paper]{scrreprt}
+\usepackage[utf8]{inputenc}
+% encoding & language
+\usepackage{selinput}
+\SelectInputMappings{}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% questionary 
+\usepackage{paperandpencil}
+\usepackage[margin=1cm]{geometry}
+
+
+\begin{document}
+
+
+\question{\bf Name} \linetext{}
+
+
+\question{\bf Gender}
+
+	\begin{enumerate}
+	\item male
+	\item male
+	\end{enumerate}
+
+\question{\bf Age (in years)}
+	\xxbox
+
+\question{\bf Education level}
+
+	\begin{enumerate}
+	\item no education% \linetext{}
+	\item primary school
+	\item secondary school
+	\item university
+	\item PhD
+	\end{enumerate}
+
+
+\question{\bf Body mass (kg)}
+	\xxxbox
+
+\question{\bf Height (cm)}
+	\xxxbox
+
+\question{\bf Eye color}
+
+	\begin{answersC}
+	\item blue
+	\item green
+	\item gray
+	\item brown
+	\item black
+	\item other%: \linetext{}
+	\end{answersC}
+
+\question{\bf Hobbies}
+
+	\begin{answersB}
+	\item sport
+	\item music
+	\item stamp
+	\item dance
+	\item art
+	\item other: \linetext{}
+	\end{answersB}
+
+\question{\bf Please evaluate composer W.~A.~Mozart on a scale. Zero means horrible, ten means fantastic.}
+
+	 \hupCten 
+
+
+\question{\bf Date}
+
+\monthandyearA
+
+\end{document}

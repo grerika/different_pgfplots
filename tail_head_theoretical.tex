@@ -1,0 +1,28 @@
+\documentclass[border=2mm]{standalone}
+\usepackage{pgfplots,nicefrac}
+\usepackage{filecontents}
+
+%TODO data
+\begin{filecontents}{mydata.dat}
+1 0.5
+2 0.5
+\end{filecontents}
+
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			ytick={0.5,1.0},yticklabels={0.5,1.0},
+			xtick={1,2},xticklabels={$x_1$,$x_2$},
+			xmin=0,xmax=3,
+			ymin=0,ymax=1.1,
+			ylabel near ticks,	
+			width=0.7\textwidth,
+			height=0.3\textwidth
+		]
+			
+			\addplot[only marks, mark size=3,red!50!black] table[x index=0, y index=1] {mydata.dat};
+			\draw[dashed] (0,50) -- (2\textwidth,50);
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

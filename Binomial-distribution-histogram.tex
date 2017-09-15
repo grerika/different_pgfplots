@@ -1,0 +1,28 @@
+\documentclass[border=2mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+
+%TODO parameters 
+\pgfmathsetmacro\n{40}
+\pgfmathsetmacro\p{0.2}
+\pgfmathsetmacro\q{0.5}
+
+\begin{document}
+	\begin{tikzpicture}[declare function={binom(\k,\n,\p)=\n!/(\k!*(\n-\k)!)*\p^\k*(1-\p)^(\n-\k);}]
+		\begin{axis}[
+		    	samples at={0,...,\n},
+			xmax=\n+2,		    	
+			%TODO the next 2 lines if necessary
+			ymax=0.22,
+			ytick={0,0.05,0.1,0.15,0.2},
+			y tick label style={ /pgf/number format/.cd, fixed, fixed zerofill, precision=2},			
+			axis x line=middle,
+			axis y line=left,
+			ybar=0pt, bar width=1
+		]
+			\addplot[fill=cyan, fill opacity=0.5] {binom(x,\n,\p)}; 
+			\addplot[fill=orange, fill opacity=0.5] {binom(x,\n,\q)};
+			\legend{$p=0.2$,$p=0.5$}
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,18 @@
+% xelatex is needed to compile this file
+\documentclass[border=2mm]{standalone}
+\usepackage{pst-plot}
+
+\begin{document}
+	\begin{pspicture}(-1,-1)(12,5)
+	\psset{yunit=0.1}
+	\psaxes[dx=1cm,Dx=10,dy=20,ticksize=4pt 0,axesstyle=frame,labels=x](0,0)(11,40)
+
+	%one sample
+	\rput{-90}(0,10){\psBoxplot[arrowlength=0.5,fillcolor=blue!30]{
+	   20  25  25  27  28  31  33  34  36  37  44  50  59  85  86}}\rput(10,10){male}
+	%second sample	   
+	\rput{-90}(0,30){\psBoxplot[fillcolor=red!30]{
+	   5  7  10  14  18  19  25  29  31  33}}\rput(10,30){female}
+	\end{pspicture}
+\end{document}
+

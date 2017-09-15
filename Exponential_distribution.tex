@@ -1,0 +1,36 @@
+\documentclass[border=2mm]{standalone}
+\usepackage{pgfplots,amsmath}
+\pgfmathdeclarefunction{exponentialdens}{2}{\pgfmathparse{#2*exp(-(#2*#1))}}
+\pgfmathdeclarefunction{exponentialcdf}{2}{\pgfmathparse{1-exp(-(#2*#1))}}
+
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			%title={$\lambda=1$},
+			samples=100,	
+			domain=0:6.5,
+			axis x line=middle, axis y line=middle,		
+			xmin=0,	xmax=6.5,
+			ymin=0,	ymax=1.1,
+			xtick = {0,1,2,3,4,5,6},
+			ytick = {0,0.2, 0.4,0.6,0.8,1.0},
+			axis lines*=left, 
+			axis on top,	
+			every axis y label/.style={at=(current axis.above origin),anchor=south},
+			every axis x label/.style={at=(current axis.right of origin),anchor=west},
+			legend pos = south  east,
+			clip=false,
+		%	grid=both,
+		]
+
+			 \addplot [very thick,blue] {exponentialdens(x, 1)};
+			 \addplot [very thick,red] {exponentialcdf(x, 1)};
+
+			 \legend{$f(x)$, $F(x)$}
+		%	\legend{density function $f(x)$, distribution function $F(x)$}
+		\end{axis}
+
+		\draw[dashed] (0,5.17) -- (6.8,5.17);
+	\end{tikzpicture}
+\end{document}
