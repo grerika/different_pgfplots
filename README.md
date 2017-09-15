@@ -1,7 +1,10 @@
 # different_pgfplots
 Here I collected several plots I often use in statistics sheets and posters.
 
-Contents (so far)
+# Figures_for_statistics.pdf
+This main file contains most of the figures in one file for a quick overview.
+
+## Contents (so far)
 1. Form
 2. Discrete variables
 	2.1. Barplot
