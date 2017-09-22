@@ -1,6 +1,6 @@
 \documentclass[border=2mm]{standalone}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.7}
+%\pgfplotsset{compat=1.7} # if  you want touching bars
 
 %TODO parameters 
 \pgfmathsetmacro\n{40}
@@ -18,7 +18,7 @@
 			y tick label style={ /pgf/number format/.cd, fixed, fixed zerofill, precision=2},			
 			axis x line=middle,
 			axis y line=left,
-			ybar=0pt, bar width=1
+			ybar=0pt, bar width=3
 		]
 			\addplot[fill=cyan, fill opacity=0.5] {binom(x,\n,\p)}; 
 			\addplot[fill=orange, fill opacity=0.5] {binom(x,\n,\q)};
