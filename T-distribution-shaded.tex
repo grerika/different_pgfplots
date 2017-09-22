@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+
+\def\basefunc{
+    gamma((\n+1)/2.)/(sqrt(\n*pi)*gamma(\n/2.))*((1+(x*x)/\n)^(-(\n+1)/2.))
+}
+%TODO degrees of freedom is here    
+\def\n{7}
+%TODO critical value is here. Area is shaded until -\ta and from +\ta until ends
+\def\ta{2.365}
+
+% axis style, ticks, etc
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,    % put the x axis in the middle
+                    axis y line=middle,    % put the y axis in the middle
+                    label style={font=\small},
+                    tick label style={font=\footnotesize}  
+                    }}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}[	
+		samples=200,
+		height=70mm,
+		width=110mm,
+		ymin=0,ymax=0.43,
+		xmin=-5,xmax=5,
+		xtick={-4,-\ta,-2,0,2,\ta,4},
+		xticklabels={-4,-\ta,,0,,\ta,4},
+		ytick={0,0.1,0.2,0.3,0.4}
+	]
+        \addplot gnuplot [no marks,fill=cyan!50,draw=black,domain={-5:-\ta}]{\basefunc} \closedcycle; 
+        \addplot gnuplot [no marks,fill=cyan!50,draw=black,domain={\ta:5}]{\basefunc} \closedcycle; 
+        \addplot gnuplot [black,thick,smooth,no marks,domain={-5:5}]{\basefunc};   
+        \end{axis}
+    \end{tikzpicture}
+\end{document}

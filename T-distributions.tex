@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+
+\def\basefunc{
+    gamma((\n+1)/2.)/(sqrt(\n*pi)*gamma(\n/2.))*((1+(x*x)/\n)^(-(\n+1)/2.))
+}    
+
+
+% axis style, ticks, etc
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,    % put the x axis in the middle
+                    axis y line=middle,    % put the y axis in the middle
+                    label style={font=\small},
+                    tick label style={font=\footnotesize}  
+                    }}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}[	
+		samples=200,
+		height=70mm,
+		width=120mm,
+		ymin=0,ymax=0.43,
+		xmin=-8,xmax=8,
+		xtick={-4,-2,0,2,4},
+		ytick={0,0.1,0.2,0.4}
+	]
+	%TODO degrees of freedom
+	\foreach \n in {2,4,10}{	
+	        \addplot gnuplot [thick,smooth,no marks,domain={-7.8:7.8}]{\basefunc};  
+	}
+	\legend{2,4,10};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}
